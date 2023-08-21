@@ -118,7 +118,7 @@ export default function RootLayout({
 }) {
 
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
         <Suspense>
             <Providers>
@@ -130,7 +130,9 @@ export default function RootLayout({
                         <div
                             className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"/>
                     </div>
-                    <Header/>
+                    <Suspense fallback={<div/>}>
+                        <Header/>
+                    </Suspense>
                     {children}
                 </div>
                 <Footer/>

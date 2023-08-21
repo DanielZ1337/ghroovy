@@ -4,9 +4,14 @@ import {useTheme} from "next-themes";
 import {Button} from "@/components/ui/button";
 import {AnimatePresence, m, MotionProps} from "framer-motion";
 import {MoonIcon, SunIcon} from "lucide-react";
+import {useEffect, useState} from "react";
 
 export default function ThemeSwitcher() {
     const {resolvedTheme, theme, setTheme} = useTheme()
+    const [isMounted, setIsMounted] = useState<boolean>()
+    useEffect(() => {setIsMounted(true)}, []);
+
+    if (!isMounted) return null
 
     const buttonAnimation: MotionProps = {
         initial: {opacity: 0, scale: 0, rotate: 0},

@@ -1,4 +1,7 @@
+'use client'
+
 import {
+    ChevronDown,
     Cloud,
     CreditCard,
     Github,
@@ -29,19 +32,30 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {getServerSession} from "next-auth";
-import {nextAuthOptions} from "@/lib/auth";
+import {Button} from "@/components/ui/button";
+import {signOut, useSession} from "next-auth/react";
+import React, {useState} from "react";
+import {ImSpinner8} from "react-icons/im";
 
-export default async function AdminProfileDropdown() {
-    const session = await getServerSession(nextAuthOptions)
+export default function AdminProfileDropdown() {
+    const {data: session, status} = useSession()
+    const [isLoading, setIsLoading] = useState<boolean>()
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Avatar>
-                    <AvatarImage src={session?.user.image!}/>
-                    <AvatarFallback>{session?.user.name?.charAt(0)}</AvatarFallback>
-                </Avatar>
+                <div className={"flex gap-4 items-center justify-center cursor-pointer"}>
+                    <span className="hidden text-right lg:block">
+                        <span
+                            className="block text-sm font-medium text-black dark:text-white">{session?.user.name}</span>
+                        <span className="block text-xs">{session?.user.email}</span>
+                    </span>
+                    <Avatar>
+                        <AvatarImage src={session?.user.image!}/>
+                        <AvatarFallback>{session?.user.name?.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <ChevronDown size={20}/>
+                </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -117,10 +131,23 @@ export default async function AdminProfileDropdown() {
                     <span>API</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator/>
-                <DropdownMenuItem>
-                    <LogOut className="mr-2 h-4 w-4"/>
-                    <span>Log out</span>
-                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                <DropdownMenuItem asChild>
+                    <Button variant={"ghost"} className={"w-full"}
+                            onClick={() => {
+                                setIsLoading(true)
+                                signOut({
+                                    callbackUrl: "/",
+                                    redirect: true
+                                }).then(() => {
+                                    setIsLoading(false)
+                                })
+                            }}
+                            disabled={isLoading}
+                    >
+                        <LogOut className="mr-2 h-4 w-4"/>
+                        <span> {isLoading ? <ImSpinner8 className={"animate-spin w-5 h-5"}/> : "Logout"}</span>
+                        <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                    </Button>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

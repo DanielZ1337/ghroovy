@@ -27,7 +27,7 @@ export const nextAuthOptions: NextAuthOptions = {
     pages: {
         signIn: '/auth/signin',
     },
-    debug: true,
+    // debug: true,
     providers: [
         GithubProvider({
             clientId: GITHUB_CLIENT_ID,
