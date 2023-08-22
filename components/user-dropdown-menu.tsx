@@ -1,6 +1,23 @@
 'use client'
 
 import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuPortal,
+    DropdownMenuSeparator,
+    DropdownMenuShortcut,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
+    DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
+import {signOut, useSession} from "next-auth/react";
+import React, {useState} from "react";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import {
     ChevronDown,
     Cloud,
     CreditCard,
@@ -15,46 +32,25 @@ import {
     Settings,
     User,
     UserPlus,
-    Users,
-} from "lucide-react"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuPortal,
-    DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {Button} from "@/components/ui/button";
-import {signOut, useSession} from "next-auth/react";
-import React, {useState} from "react";
+    Users
+} from "lucide-react";
+import {AuthButton} from "@/components/layout/ui/login/auth-button";
 import {ImSpinner8} from "react-icons/im";
+import {Button} from "@/components/ui/button";
 
-export default function AdminProfileDropdown() {
+export default function UserDropdownMenu() {
     const {data: session, status} = useSession()
     const [isLoading, setIsLoading] = useState<boolean>()
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <div className={"flex gap-4 items-center justify-center cursor-pointer"}>
-                    <span className="hidden text-right lg:block">
-                        <span
-                            className="block text-sm font-medium text-black dark:text-white">{session?.user.name}</span>
-                        <span className="block text-xs">{session?.user.email}</span>
-                    </span>
-                    <Avatar>
+                <div className={"flex gap-2 items-center justify-center cursor-pointer"}>
+                    <Avatar className={"w-9 h-9"}>
                         <AvatarImage src={session?.user.image!}/>
                         <AvatarFallback>{session?.user.name?.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <ChevronDown size={20}/>
+                    <ChevronDown className={"hidden lg:block w-3 h-3 lg:w-4 lg:h-4"}/>
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">

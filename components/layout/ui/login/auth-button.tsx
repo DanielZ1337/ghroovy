@@ -6,6 +6,7 @@ import {signIn, SignInOptions, signOut, SignOutParams} from "next-auth/react";
 import {ImSpinner8} from "react-icons/im";
 import {toast} from "@/components/ui/use-toast";
 import {useRouter} from "next/navigation";
+import {cn} from "@/lib/utils";
 
 export interface AuthButtonProps
     extends ButtonProps {
@@ -18,9 +19,10 @@ export interface AuthButtonProps
     usingExternalLoadingState?: boolean
     signingOut?: boolean
     signOutOptions?: SignOutParams
+    className?: string
 }
 
-function AuthButtonWrapper({provider, icon, children, signInOptions, externalLoadingState, usingExternalLoadingState, signingOut, signOutOptions, ...props}: AuthButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) {
+function AuthButtonWrapper({provider, icon, children, signInOptions, externalLoadingState, usingExternalLoadingState, signingOut, signOutOptions, className, ...props}: AuthButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) {
     const [isLoading, setIsLoading] = useState<boolean>()
 
     return (
@@ -57,6 +59,7 @@ function AuthButtonWrapper({provider, icon, children, signInOptions, externalLoa
                 }
             }}
             ref={ref}
+            className={cn("relative", className)}
             {...props}
         >
             {icon && !isLoading && !externalLoadingState && React.cloneElement(icon, {className: "w-5 h-5"})}

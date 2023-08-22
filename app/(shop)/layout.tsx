@@ -118,10 +118,10 @@ export default function RootLayout({
 }) {
 
     return (
-        <body className={inter.className}>
+        <body className={"min-h-screen bg-background font-sans antialiased"}>
         <Suspense>
             <Providers>
-                <div className={"min-h-[100dvh]"}>
+                <div className={"relative flex min-h-[100dvh] flex-col"}>
                     <div aria-hidden="true"
                          className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
                         <div

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/public/images/google.svg";
+import logo from "@/public/logo.svg";
 import {Button} from "@/components/ui/button";
 import {Home} from "lucide-react";
 import auth_background from "@/public/images/login-background.jpg";
