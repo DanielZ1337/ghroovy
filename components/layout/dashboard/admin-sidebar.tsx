@@ -8,8 +8,20 @@ import React from "react";
 import {adminLinks} from "@/lib/admin-links";
 import {usePathname} from "next/navigation";
 import {m} from "framer-motion";
+import {ScrollArea} from "@/components/ui/scroll-area";
 
-function AdminSidebarLink({link, index, pathname, ...props}: { link: { to: string, label: string, icon: React.ReactElement, disabled: boolean }, index: number, pathname: string }) {
+interface AdminSidebarLinkProps {
+    link: {
+        to: string
+        label: string
+        icon?: React.ReactElement | null
+        disabled: boolean
+    }
+    pathname: string
+    index: number
+}
+
+function AdminSidebarLink({link, pathname, index, ...props}: AdminSidebarLinkProps) {
     return <m.li
         initial={{opacity: 0, y: 20}}
         animate={{opacity: 1, y: 0}}
@@ -20,7 +32,7 @@ function AdminSidebarLink({link, index, pathname, ...props}: { link: { to: strin
         <Link
             href={link.disabled ? "#" : link.to}
             className={cn("flex items-center gap-4 py-2 px-4 rounded-md hover:bg-accent hover:text-accent-foreground dark:hover:bg-gray-700 dark:hover:text-white", link.disabled ? "cursor-not-allowed" : "", link.to === pathname ? "bg-accent text-accent-foreground dark:bg-gray-700 dark:text-white" : "")}>
-            {React.cloneElement(link.icon, {className: "w-6 h-6 stroke-current"})}
+            {link.icon && React.cloneElement(link.icon, {className: "w-6 h-6 stroke-primary-foreground"})}
             <m.span
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
@@ -30,7 +42,7 @@ function AdminSidebarLink({link, index, pathname, ...props}: { link: { to: strin
     </m.li>;
 }
 
-export default function Sidebar() {
+export default function AdminSidebar() {
     const pathname = usePathname()
 
     return (
@@ -50,8 +62,7 @@ export default function Sidebar() {
                     </svg>
                 </button>
             </div>
-            <div className={"no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear"}>
-                <nav className={"mt-5 py-4 px-4 lg:mt-9 lg:px-6 lg:py-6"}>
+                <ScrollArea className={"overflow-y-auto mt-5 py-4 px-4 lg:mt-9 lg:px-6 lg:py-6"}>
                     <ul className={"flex flex-col gap-4"}>
                         {adminLinks.groups.map((group, index) => (
                             <li key={index}>
@@ -67,8 +78,7 @@ export default function Sidebar() {
                             </li>
                         ))}
                     </ul>
-                </nav>
-            </div>
+                </ScrollArea>
         </aside>
     )
 }

@@ -1,4 +1,14 @@
-import {AreaChart, LayoutDashboard, PackageSearch, Percent, Settings, TrendingUp, User, Users} from "lucide-react";
+import {
+    AreaChart,
+    Bell,
+    LayoutDashboard, MessageCircle,
+    PackageSearch,
+    Percent,
+    Settings,
+    TrendingUp,
+    User,
+    Users
+} from "lucide-react";
 import {TbFileInvoice} from "react-icons/tb";
 import React from "react";
 
@@ -75,6 +85,18 @@ export const adminLinks = {
                     "to": "/admin/settings",
                     "label": "Settings",
                     "icon": <Settings/>,
+                    "disabled": false
+                },
+                {
+                    "to": "/admin/notifications",
+                    "label": "Notifications",
+                    "icon": <Bell/>,
+                    "disabled": false
+                },
+                {
+                    "to": "/admin/messages",
+                    "label": "Messages",
+                    "icon": <MessageCircle/>,
                     "disabled": false
                 },
             ]

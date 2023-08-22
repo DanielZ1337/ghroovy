@@ -4,12 +4,19 @@ import {useTheme} from "next-themes";
 import {Button} from "@/components/ui/button";
 import {AnimatePresence, m, MotionProps} from "framer-motion";
 import {MoonIcon, SunIcon} from "lucide-react";
-import {useEffect, useState} from "react";
+import * as React from "react";
+import {forwardRef, useEffect, useState} from "react";
 
-export default function ThemeSwitcher() {
+export interface ThemeSwitcherProps
+    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+}
+
+function ThemeSwitcher({...props}: ThemeSwitcherProps, ref: React.Ref<HTMLButtonElement>) {
     const {resolvedTheme, theme, setTheme} = useTheme()
     const [isMounted, setIsMounted] = useState<boolean>()
-    useEffect(() => {setIsMounted(true)}, []);
+    useEffect(() => {
+        setIsMounted(true)
+    }, []);
 
     if (!isMounted) return null
 
@@ -17,9 +24,8 @@ export default function ThemeSwitcher() {
         initial: {opacity: 0, scale: 0, rotate: 0},
         animate: {opacity: 1, scale: 1, rotate: 360},
         exit: {opacity: 0, scale: 0, rotate: 0},
-        whileHover: {scale: 1.1, rotate: [0, 90, 12, -45, 25, 0]},
+        whileHover: {scale: 1.1, rotate: [0, 90, -45, 25, 0]},
         whileTap: {scale: 0.9},
-        whileFocus: {scale: 1.1},
     }
 
     return (
@@ -30,6 +36,8 @@ export default function ThemeSwitcher() {
             type="button"
             className={"p-2"}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            ref={ref}
+            {...props}
         >
             <AnimatePresence>
                 {resolvedTheme === "dark" ? (
@@ -54,3 +62,5 @@ export default function ThemeSwitcher() {
         </Button>
     )
 }
+
+export default forwardRef(ThemeSwitcher)
