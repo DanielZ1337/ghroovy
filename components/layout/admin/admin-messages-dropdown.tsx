@@ -17,13 +17,13 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import React from "react";
 import {getServerSession} from "next-auth";
 import {nextAuthOptions} from "@/lib/auth";
-import UnreadNotificationIndicator from "@/components/layout/dashboard/unread-notification-indicator";
+import UnreadNotificationIndicator from "@/components/layout/admin/unread-notification-indicator";
 
 const messages = [
     {
         id: 1,
         title: "New user registeredNew user registeredNew user registeredNew user registeredNew user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         image: "/images/avatars/1.jpg",
         read: false,
@@ -31,7 +31,7 @@ const messages = [
     {
         id: 2,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         image: "/images/avatars/1.jpg",
         read: false,
@@ -39,7 +39,7 @@ const messages = [
     {
         id: 3,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         image: "/images/avatars/1.jpg",
         read: true,
@@ -47,7 +47,7 @@ const messages = [
     {
         id: 4,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         image: "/images/avatars/1.jpg",
         read: false,
@@ -55,7 +55,7 @@ const messages = [
     {
         id: 5,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         image: "/images/avatars/1.jpg",
         read: true,
@@ -63,7 +63,7 @@ const messages = [
     {
         id: 6,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         image: "/images/avatars/1.jpg",
         read: false,
@@ -71,7 +71,7 @@ const messages = [
     {
         id: 7,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         image: "/images/avatars/1.jpg",
         read: true,
@@ -79,7 +79,7 @@ const messages = [
     {
         id: 8,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template. A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template. A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         image: "/images/avatars/1.jpg",
         read: false,
@@ -87,7 +87,7 @@ const messages = [
     {
         id: 9,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         image: "/images/avatars/1.jpg",
         read: true,
@@ -95,21 +95,21 @@ const messages = [
     {
         id: 10,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "10m",
         read: false,
     },
     {
         id: 11,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "",
         read: false,
     },
     {
         id: 12,
         title: "New user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "",
         read: false,
     },
@@ -188,7 +188,8 @@ export default async function AdminMessagesDropdown() {
                                                                     D
                                                                 </AvatarFallback>
                                                             </Avatar>
-                                                            <span className={"text-sm font-medium group-data-[read=true]:font-light text-foreground line-clamp-2"}>{message.title}</span>
+                                                            <span
+                                                                className={"text-sm font-medium group-data-[read=true]:font-light text-foreground line-clamp-2"}>{message.title}</span>
                                                         </span>
                                                         <span
                                                             className="group-data-[read=false]:font-medium text-xs text-muted-foreground w-full line-clamp-3">{message.description}</span>

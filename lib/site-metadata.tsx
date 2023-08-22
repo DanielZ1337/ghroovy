@@ -14,7 +14,7 @@ export const siteMetadata = {
             url: "https://twitter.com/danielz1337",
             icon: <SiTwitter/>,
         },
-        instagram:{
+        instagram: {
             url: "https://www.instagram.com/danielz1337",
             icon: <SiInstagram/>,
         },

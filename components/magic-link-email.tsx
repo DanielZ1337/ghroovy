@@ -25,10 +25,10 @@ const baseUrl = process.env.VERCEL_URL
     : 'https://ghroovy.danielz.dev';
 
 export default function MagicLinkEmail({
-    email,
-    magicLink,
-    magicLinkExpires,
-}: VercelInviteUserEmailProps) {
+                                           email,
+                                           magicLink,
+                                           magicLinkExpires,
+                                       }: VercelInviteUserEmailProps) {
 
     return (
         <Html>

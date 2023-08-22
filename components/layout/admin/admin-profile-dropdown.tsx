@@ -58,7 +58,15 @@ export default function AdminProfileDropdown() {
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>
+                    <p className={"hidden lg:block"}>My Account</p>
+                    <div className="flex-col space-y-1 flex lg:hidden">
+                        <p className="text-sm font-medium leading-none">{session?.user.name}</p>
+                        <p className="text-xs leading-none text-muted-foreground">
+                            {session?.user.email}
+                        </p>
+                    </div>
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator/>
                 <DropdownMenuGroup>
                     <DropdownMenuItem>

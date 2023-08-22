@@ -2,6 +2,8 @@ import Container from "@/components/layout/container";
 import Link from "next/link";
 import {siteMetadata} from "@/lib/site-metadata";
 import React from "react";
+import Image from "next/image";
+import logo from "@/public/logo.svg";
 
 function FooterIconLink({href, title, children}: { href: string; title?: string; children: React.ReactElement }) {
     return <Link href={href}
@@ -20,13 +22,8 @@ export default function Footer() {
             <Container>
                 <div className="flex flex-col items-center justify-between py-12 md:flex-row">
                     <div className="flex flex-col items-center md:items-start">
-                        <Link href="#" aria-label="logo" className="flex items-center space-x-2">
-                            <div aria-hidden="true" className="flex space-x-1">
-                                <div className="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>
-                                <div className="h-6 w-2 bg-primary"></div>
-                            </div>
-                            <span
-                                className="text-2xl font-bold text-gray-900 dark:text-white">{siteMetadata.name}</span>
+                        <Link href="/" aria-label="logo" className="w-24 max-h-24 lg:w-28 lg:max-h-28">
+                            <Image src={logo} alt={'logo'}/>
                         </Link>
                         <p className="mt-4 text-gray-500 dark:text-gray-400">&copy; {fullYear} {siteMetadata.name}. All
                             rights reserved</p>

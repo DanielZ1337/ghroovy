@@ -1,4 +1,3 @@
-
 export const metadata = {
     title: "Analytics",
     description: "Manage your analytics"

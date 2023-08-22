@@ -9,6 +9,8 @@ import {nextAuthOptions} from "@/lib/auth";
 import LoginModal from "@/components/layout/ui/login/login-modal/login-modal";
 import LogoutButton from "@/components/layout/ui/login/login-modal/logout-button";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "@/public/logo.svg";
 
 
 const links = [
@@ -65,14 +67,9 @@ export default async function Header() {
                 <Container>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
                         <div className="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
-                            <a href="/#home" aria-label="logo" className="flex items-center space-x-2">
-                                <div aria-hidden="true" className="flex space-x-1">
-                                    <div className="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>
-                                    <div className="h-6 w-2 bg-primary"></div>
-                                </div>
-                                <span
-                                    className="text-2xl font-bold text-gray-900 dark:text-white">{siteMetadata.name}</span>
-                            </a>
+                            <Link href="/" aria-label="logo" className="w-24 max-h-24 lg:w-28 lg:max-h-28">
+                                <Image src={logo} alt={'logo'}/>
+                            </Link>
 
                             <div className="relative flex max-h-10 items-center lg:hidden">
                                 <HamburgerMenu/>

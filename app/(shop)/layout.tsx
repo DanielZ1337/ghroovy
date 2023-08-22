@@ -118,7 +118,6 @@ export default function RootLayout({
 }) {
 
     return (
-        <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
         <Suspense>
             <Providers>
@@ -140,6 +139,5 @@ export default function RootLayout({
             </Providers>
         </Suspense>
         </body>
-        </html>
     )
 }

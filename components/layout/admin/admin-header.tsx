@@ -2,11 +2,17 @@ import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import ThemeSwitcher from "@/components/layout/ui/theme-switcher";
 import React, {Suspense} from "react";
-import AdminProfileDropdown from "@/components/layout/ui/admin-profile-dropdown";
+import AdminProfileDropdown from "@/components/layout/admin/admin-profile-dropdown";
 import Link from "next/link";
 import {Bell, Home, Menu, MessageCircle} from "lucide-react";
-import AdminMessagesDropdown from "@/components/layout/dashboard/admin-messages-dropdown";
-import AdminNotificationsDropdown from "@/components/layout/dashboard/admin-notifications-dropdown";
+import AdminMessagesDropdown from "@/components/layout/admin/admin-messages-dropdown";
+import AdminNotificationsDropdown from "@/components/layout/admin/admin-notifications-dropdown";
+import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger} from "@/components/ui/sheet";
+import Image from "next/image";
+import logo from "@/public/logo.svg";
+import {adminLinks} from "@/lib/admin-links";
+import {ScrollArea} from "@/components/ui/scroll-area";
+import AdminMobileMenu from "@/components/layout/admin/admin-mobile-menu";
 
 export default async function AdminHeader() {
 
@@ -25,14 +31,7 @@ export default async function AdminHeader() {
                             <Home/>
                         </Link>
                     </Button>
-                    <Button
-                        variant={"ghost"}
-                        size={"icon"}
-                        aria-controls="sidebar"
-                        // className="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
-                    >
-                        <Menu/>
-                    </Button>
+                    <AdminMobileMenu/>
                 </div>
                 <div className="hidden sm:block">
                     <form>

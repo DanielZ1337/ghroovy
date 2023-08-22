@@ -1,7 +1,7 @@
 import {SiGithub, SiGoogle} from "react-icons/si";
 import React from "react";
 
-export const authProviders = [
+export const oAuthProviders = [
     {
         name: "Google",
         provider: "google",

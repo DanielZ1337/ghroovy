@@ -4,6 +4,7 @@ import {Inter} from 'next/font/google'
 import Providers from "@/components/providers";
 import {siteMetadata} from "@/lib/site-metadata";
 import {Suspense} from "react";
+import {Toaster} from "@/components/ui/toaster";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -115,7 +116,6 @@ export default function RootLayout({
 }) {
 
     return (
-        <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
         <Suspense>
             <Providers>
@@ -124,10 +124,9 @@ export default function RootLayout({
                     {children}
                 </div>
                 {/*<Footer/>*/}
-                {/*<Toaster/>*/}
+                <Toaster/>
             </Providers>
         </Suspense>
         </body>
-        </html>
     )
 }

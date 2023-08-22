@@ -1,6 +1,6 @@
 import React, {Suspense} from "react"
-import AdminSidebar from "@/components/layout/dashboard/admin-sidebar"
-import AdminHeader from "@/components/layout/dashboard/admin-header"
+import AdminSidebar from "@/components/layout/admin/admin-sidebar"
+import AdminHeader from "@/components/layout/admin/admin-header"
 import {siteMetadata} from "@/lib/site-metadata";
 
 export const metadata = {

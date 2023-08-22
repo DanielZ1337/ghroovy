@@ -14,13 +14,13 @@ import {ScrollArea} from "@/components/ui/scroll-area";
 import {Skeleton} from "@/components/ui/skeleton";
 import {Separator} from "@/components/ui/separator";
 import {cn} from "@/lib/utils";
-import UnreadNotificationIndicator from "@/components/layout/dashboard/unread-notification-indicator";
+import UnreadNotificationIndicator from "@/components/layout/admin/unread-notification-indicator";
 
 const notifications = [
     {
         id: 1,
         title: "New user registeredNew user registeredNew user registeredNew user registeredNew user registered",
-        description: "A new user has registered on your website. Check out this cool dashboard template.",
+        description: "A new user has registered on your website. Check out this cool admin template.",
         time: "5m",
         read: false,
     }

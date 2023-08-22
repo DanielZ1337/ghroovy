@@ -26,6 +26,9 @@ export const nextAuthOptions: NextAuthOptions = {
     },
     pages: {
         signIn: '/auth/signin',
+        error: '/auth/error', // Error code passed in query string as ?error=
+        verifyRequest: '/auth/verify-request', // (used for check email message)
+        signOut: '/auth/signout',
     },
     // debug: true,
     providers: [

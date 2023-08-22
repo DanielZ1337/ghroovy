@@ -7,9 +7,9 @@ import {
     DialogTrigger
 } from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
-import {LoginButton} from "@/components/layout/ui/login/login-button";
-import {authProviders} from "@/lib/auth-providers";
-import EmailLoginPageForm from "@/components/layout/ui/login/login-page/email-login-page-form";
+import {AuthButton} from "@/components/layout/ui/login/auth-button";
+import {oAuthProviders} from "@/lib/o-auth-providers";
+import EmailLoginForm from "@/components/layout/ui/login/login-page/email-login-form";
 import React from "react";
 
 export default async function LoginModal() {
@@ -25,7 +25,7 @@ export default async function LoginModal() {
                 <DialogHeader>
                     <DialogTitle className={"text-center"}>Login</DialogTitle>
                     <DialogDescription className={"flex flex-col gap-4"}>
-                        <EmailLoginPageForm/>
+                        <EmailLoginForm/>
                         <div className={"flex justify-center items-center gap-4"}>
                             <div className="h-1 w-1/2 bg-muted-foreground rounded-full my-4"/>
                             <div className="text-center">
@@ -34,9 +34,9 @@ export default async function LoginModal() {
                             <div className="h-1 w-1/2 bg-muted-foreground rounded-full my-4"/>
                         </div>
                         <div className="grid w-full items-center gap-4">
-                            {authProviders.map((provider) => (
-                                <LoginButton key={provider.provider} provider={provider.provider}
-                                             icon={provider.icon}>Login with {provider.name}</LoginButton>
+                            {oAuthProviders.map((provider) => (
+                                <AuthButton key={provider.provider} provider={provider.provider}
+                                            icon={provider.icon}>Login with {provider.name}</AuthButton>
                             ))}
                         </div>
                     </DialogDescription>

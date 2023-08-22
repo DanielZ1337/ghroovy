@@ -7,8 +7,9 @@ import {HiOutlineMail} from "react-icons/hi";
 import React, {useState} from "react";
 import {signIn} from "next-auth/react";
 import {z} from "zod";
+import {toast} from "@/components/ui/use-toast";
 
-export default function EmailLoginModalForm() {
+export default function EmailLoginForm() {
     const [email, setEmail] = useState<string>()
     const [isLoading, setIsLoading] = useState<boolean>()
     const emailSchema = z.string().email()
@@ -24,21 +25,30 @@ export default function EmailLoginModalForm() {
             setIsLoading(true)
             signIn("email", {email: email, redirect: false}).then(() => {
                 setIsLoading(false)
+                toast({
+                    title: "Email Sent",
+                    description: "Check your email for the magic link",
+                })
+            }).catch((error) => {
+                setIsLoading(false)
+                toast({
+                    title: "Error",
+                    description: error.message,
+                })
             })
         }}>
-            <Label className={"text-left block -mb-2 ml-3"} htmlFor={"email"}>Email</Label>
+            <Label className={"sr-only"} htmlFor={"email"}>Email</Label>
             <Input
                 onInput={(event) => setEmail(event.currentTarget.value)}
                 type={"email"}
                 name={"email"}
-                placeholder="name@examdple.com"
+                placeholder="name@example.com"
                 autoCapitalize="none"
                 autoComplete="email"
                 autoCorrect="off"
                 required
             />
-            <AuthButton externalLoadingState={isLoading} usingExternalLoadingState className={"bg-primary py-6"}
-                        size={"lg"}
+            <AuthButton externalLoadingState={isLoading} usingExternalLoadingState
                         icon={<HiOutlineMail/>}>
                 Login with Email
             </AuthButton>

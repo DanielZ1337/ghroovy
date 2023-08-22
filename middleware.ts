@@ -28,16 +28,26 @@ export async function middleware(request: NextRequest) {
             return NextResponse.redirect(`${origin}/auth/signin`);
         }*/
 
-        // if already token, redirect to admin dashboard
+        // if already token, redirect to admin admin
         if (token && token.role === "admin") {
             return NextResponse.redirect(`${origin}/admin`);
         }
 
-        // if already token, redirect to user dashboard
+        // if already token, redirect to user admin
         if (token && token.role === "user") {
             return NextResponse.redirect(`${origin}/account`);
         }
     }
+
+    // if no token and signout, redirect to home page
+    if (!token && pathname.startsWith("/auth/signout")) {
+        return NextResponse.redirect(`${origin}/`);
+    }
+
+    // if no token and /account
+    if (!token && pathname.startsWith("/account")) {
+        return NextResponse.redirect(`${origin}/auth/signin`);
+    }
 }
 
-export const config = { matcher: ["/admin/:path*","/api/admin/:path*", "/auth/signin", "/api/auth/signin"] };
+export const config = { matcher: ["/admin/:path*","/api/admin/:path*", "/auth/signin","/auth/signout", "/api/auth/signin", "/api/auth/signout", "/account/:path*"] };

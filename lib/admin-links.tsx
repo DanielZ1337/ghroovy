@@ -1,7 +1,8 @@
 import {
     AreaChart,
     Bell,
-    LayoutDashboard, MessageCircle,
+    LayoutDashboard,
+    MessageCircle,
     PackageSearch,
     Percent,
     Settings,
@@ -53,7 +54,7 @@ export const adminLinks = {
             "name": "Dashboard",
             "links": [
                 {
-                    "to": "/admin/dashboard",
+                    "to": "/admin/admin",
                     "label": "Dashboard",
                     "icon": <LayoutDashboard/>,
                     "disabled": true
