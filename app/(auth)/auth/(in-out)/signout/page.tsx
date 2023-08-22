@@ -21,7 +21,6 @@ export default function Page() {
                 signingOut
                 signOutOptions={{
                     callbackUrl: "/",
-                    redirect: false,
                 }}
                 icon={<LogOut/>}
             >
