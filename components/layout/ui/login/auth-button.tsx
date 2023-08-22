@@ -17,7 +17,7 @@ export interface AuthButtonProps
     externalLoadingState?: boolean
     usingExternalLoadingState?: boolean
     signingOut?: boolean
-    signOutOptions?: SignOutParams
+    signOutOptions?: SignOutParams & { redirect?: boolean }
 }
 
 function AuthButtonWrapper({provider, icon, children, signInOptions, externalLoadingState, usingExternalLoadingState, signingOut, signOutOptions, ...props}: AuthButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) {
